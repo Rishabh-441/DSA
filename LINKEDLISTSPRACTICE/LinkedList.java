@@ -2,6 +2,7 @@ package LINKEDLISTSPRACTICE;
 
 public class LinkedList {
     Node head;
+    int size = 0;
 
     //  inserting element at the end
     public void insert(int data){
@@ -19,16 +20,22 @@ public class LinkedList {
             }
             n.next = node;
         }
+        size ++;
     }
 
     //  displaying all the elements
     public void show(){
-        Node node = head;
-        while(node.next != null){
-            System.out.print(node.data + "--->");
-            node = node.next;
+        try{
+            Node node = head;
+            while(node.next != null){
+                System.out.print(node.data + "--->");
+                node = node.next;
+            }
+            System.out.println(node.data);
         }
-        System.out.println(node.data);
+        catch (NullPointerException e){
+            System.out.println("No element found");
+        }
     }
 
     //  inserting element at the starting
@@ -39,6 +46,8 @@ public class LinkedList {
 
         node.next = head;
         head = node;
+
+        size ++;
     }
 
     //  inserting element at any position
@@ -51,13 +60,21 @@ public class LinkedList {
             insertAtStart(data);
         }
         else{
-            Node n = head;
-            for (int i = 0; i < index-1; i++) {
-                n = n.next;
+            try{
+                Node n = head;
+                for (int i = 0; i < index-1; i++) {
+                    n = n.next;
+                }
+                node.next = n.next;
+                n.next = node;
+
+                size ++;
             }
-            node.next = n.next;
-            n.next = node;
+            catch (NullPointerException e){
+                System.out.println("can't insert any value at this position");
+            }
         }
+
     }
 
 }

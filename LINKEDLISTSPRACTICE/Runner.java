@@ -7,11 +7,25 @@ public class Runner {
         list.insert(23);
         list.insert(33);
         list.show();
+        System.out.println(list.size);
+
 
         list.insertAtStart(123);
         list.show();
+        System.out.println(list.size);
+
 
         list.insertAt(3,87);
+        list.show();
+        System.out.println(list.size);
+
+        list.insertAt(1,34);
+        System.out.println(list.size);
+        list.show();
+
+        list.insert(34);
+        list.insertAtStart(434);
+        System.out.println(list.size);
         list.show();
     }
 }
