@@ -74,7 +74,51 @@ public class LinkedList {
                 System.out.println("can't insert any value at this position");
             }
         }
-
     }
 
+    //  deleting first element
+    public void deleteFirst(){
+        if (size ==1){
+            head = null;
+            size --;
+        }
+        else if (size > 1){
+            head = head.next;
+            size --;
+        }
+    }
+
+    //  deleting last element
+    public void deleteLast(){
+        if (size == 1){
+            head = null;
+            size --;
+        }
+        else if(size ==2){
+            head.next = null;
+            size --;
+        }
+        else if (size > 1){
+            Node n = head;
+            for (int i = 0; i < size-2; i++) {
+                n = n.next;
+            }
+            n.next = null;
+            size --;
+        }
+
+    }
+    //  deleting an element
+    public void deleteAt(int index){
+        if (index == 0) deleteFirst();
+        else if (index == size-1) deleteLast();
+        else {
+            Node n = head;
+            for (int i = 0; i < index-1; i++) {
+                n = n.next;
+            }
+            n.next = (n.next).next;
+            size --;
+        }
+    }
 }

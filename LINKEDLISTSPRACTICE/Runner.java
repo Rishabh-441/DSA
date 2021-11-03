@@ -27,5 +27,21 @@ public class Runner {
         list.insertAtStart(434);
         System.out.println(list.size);
         list.show();
+        System.out.println(list.size);
+
+        list.deleteLast();
+        list.show();
+        System.out.println(list.size);
+
+        list.deleteFirst();
+        list.show();
+        System.out.println(list.size);
+
+        list.insert(3456);
+        list.show();
+
+        list.deleteAt(2);
+        list.show();
+        System.out.println(list.size);
     }
 }
