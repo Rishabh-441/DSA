@@ -4,12 +4,8 @@ public class CircularSinglyLinkedList {
     Node head;
     Node tail;
     int size = 0;
-
-    public void insert(int...data){
-        for (var i: data) {
-            insert(i);
-        }
-    }
+    
+    //insertion of an element
     public void insert(int data){
         Node node = new Node();
         node.data = data;
@@ -30,6 +26,14 @@ public class CircularSinglyLinkedList {
         size++;
     }
 
+    //insertion of more than one elements
+    public void insert(int...data){
+        for (var i: data) {
+            insert(i);
+        }
+    }
+    
+    //insertion at first position
     public void insertAtFirst(int data){
         Node node = new Node();
         if (size == 0){
@@ -48,6 +52,7 @@ public class CircularSinglyLinkedList {
         }
     }
 
+    //insertion at a specific position
     public void insertAt(int index, int data){
         Node node = new Node();
         node.data = data;
@@ -69,6 +74,7 @@ public class CircularSinglyLinkedList {
         }
     }
 
+    //display all elements
     public void displayCSLL(){
         try{
             Node n = head;
@@ -84,12 +90,14 @@ public class CircularSinglyLinkedList {
 
     }
 
+    //delete all the elements of the list
     public void deleteAll(){
         head = null;
         tail = null;
         size = 0;
     }
 
+    //deletion of a particular node
     public void deleteAt(int index){
         if (index >= size){
             System.out.println("deletion at this index is not possible");
@@ -117,10 +125,12 @@ public class CircularSinglyLinkedList {
         size--;
     }
 
+    //deleting first element
     public void deleteFirst(){
         deleteAt(0);
     }
 
+    //deleting last element
     public void deleteLast() {
         deleteAt(size - 1);
     }
