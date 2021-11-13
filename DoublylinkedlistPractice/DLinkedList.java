@@ -139,6 +139,11 @@ public class DLinkedList {
 
     //delete all elements
     public void deleteAll(){
+       Node n = head;
+       while(n.next != null){
+           n.prev = null;
+           n = n.next;
+        }
        head = null;
        tail = null;
        size = 0;
