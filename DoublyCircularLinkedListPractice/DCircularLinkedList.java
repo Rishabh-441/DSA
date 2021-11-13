@@ -39,6 +39,10 @@ public class DCircularLinkedList {
 
     //displaying all elements
     public void displayDCLL(){
+        if (size == 0){
+            emptyList();
+            return;
+        }
         Node n = head;
         for (int i = 0; i < size; i++,n = n.next){
             System.out.print(n.data + " ");
@@ -165,5 +169,19 @@ public class DCircularLinkedList {
         Node n = head;
         for (int i = 0; i < index-1; i++,n = n.next);
         System.out.println(n.data);
+    }
+
+    //deleting the entire list
+    public void deleteAll(){
+        tail.next = null;
+        head.prev = null;
+        Node n = head;
+        while(n.next != null){
+            n.prev = null;
+            n = n.next;
+        }
+        head = null;
+        tail = null;
+        size = 0;
     }
 }

@@ -39,5 +39,8 @@ public class DCLMain {
         list.search(559);
 
         list.elementAt(44);
+
+        list.deleteAll();
+        list.displayDCLL();
     }
 }
