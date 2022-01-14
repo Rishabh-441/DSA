@@ -6,7 +6,7 @@ public class MazeProblem1 {
     public static void main(String[] args) {
         System.out.println(mazeOne(3,3));
         mazeOnePattern(3,3,"");
-        System.out.println(mazeOnePatternArr(4,4,""));
+        System.out.println(mazeOnePatternArr(3,3,""));
     }
 
     private static void mazeOnePattern(int r, int c, String p) {
@@ -40,17 +40,13 @@ public class MazeProblem1 {
             list.add(p);
             return list;
         }
-        if (r == 1){
-            ArrayList<String> list = mazeOnePatternArr(r, c-1, p + 'R');
-            return list;
-        }
-        else if (c == 1){
-            ArrayList<String> list = mazeOnePatternArr(r-1, c, p + 'D');
-            return list;
-        }
         ArrayList<String> arr = new ArrayList<>();
-        arr.addAll(mazeOnePatternArr(r-1, c, p + 'D'));
-        arr.addAll(mazeOnePatternArr(r, c-1, p + 'R'));
+        if (c > 1){
+            arr.addAll(mazeOnePatternArr(r, c-1, p + 'R'));
+        }
+        if (r > 1){
+            arr.addAll(mazeOnePatternArr(r-1, c, p + 'D'));
+        }
         return arr;
     }
 

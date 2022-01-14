@@ -14,17 +14,12 @@ public class MazeWithObstacles {
         if (!mat[r][c]){
             return;
         }
-        if (r == mat.length-1){
-            paths(mat, r, c+1, p + 'R');
-            return;
-        }
-        else if (c == mat[0].length-1){
+        if (r < mat.length-1){
             paths(mat,r+1, c, p + 'D');
-            return;
         }
-
-        paths(mat,r+1, c, p + 'D');
-        paths(mat, r, c+1, p + 'R');
+        if (c < mat[0].length-1){
+            paths(mat, r, c+1, p + 'R');
+        }
     }
 
 }
