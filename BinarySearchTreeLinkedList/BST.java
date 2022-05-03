@@ -159,4 +159,36 @@ public class BST {
     void deleteTree() {
         root = null;
     }
+    public static ArrayList<Integer> morrisInTraversal(BSTNode node) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        BSTNode curr = node;
+
+        while (curr != null) {
+            BSTNode leftNode = curr.left;
+            if (leftNode == null) {
+                ans.add(curr.value);
+                curr = curr.right;
+            } 
+            else {
+                BSTNode rightMostNode = getRightMostNode(leftNode, curr);
+                if (rightMostNode.right == null) {
+                    rightMostNode.right = curr;
+                    curr = curr.left;
+                }
+                else {
+                    rightMostNode.right = null;
+                    ans.add(curr.value);
+                    curr = curr.right;
+                }
+            }
+        }
+        return ans;
+    }
+
+    private static BSTNode getRightMostNode(BSTNode leftNode, BSTNode curr)  {
+        while (leftNode.right != null && leftNode.right !=curr) {
+            leftNode = leftNode.right;
+        }
+        return leftNode;
+    }
 }
