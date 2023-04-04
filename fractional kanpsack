@@ -1,0 +1,74 @@
+//fractional knapsack problem:
+
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+
+
+class scratch_1 {
+    static class pair implements Comparable<pair> {
+        double ppw;
+        int wt;
+        int p;
+
+        pair(int wt, int p) {
+            this.wt = wt;
+            this.p = p;
+            this.ppw = 1.0 * p / wt;
+        }
+
+        @Override
+        public String toString() {
+            return "price : " + p + " , weight : " + wt + " , price per unit weight : " + ppw;
+        }
+
+        @Override
+        public int compareTo(pair o) {
+            if (this.ppw - o2.ppw > 0) return 0;
+            else return 1;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] price = new int[n];
+        int[] weight = new int[n];
+        System.out.println("enter price array :");
+        for (int i = 0; i < n; i++) {
+            price[i] = sc.nextInt();
+        }
+        System.out.println("enter weight array :");
+        for (int i = 0; i < n; i++) {
+            weight[i] = sc.nextInt();
+        }
+        System.out.println("enter max weight :");
+        int m = sc.nextInt();
+
+
+        PriorityQueue<pair> queue = new PriorityQueue<>();
+        for (int i = 0; i < n; i++) {
+            queue.add(new pair(weight[i], price[i]));
+        }
+
+        double ans = 0;
+
+        while (m > 0) {
+            pair a = queue.poll();
+
+            if (a.wt <= m) {
+                ans += a.p;
+                m -= a.wt;
+            }
+            else {
+                ans += a.p * (m * 1.0 / a.wt);
+                break;
+            }
+        }
+
+        System.out.println(ans);
+
+
+    }
+}
